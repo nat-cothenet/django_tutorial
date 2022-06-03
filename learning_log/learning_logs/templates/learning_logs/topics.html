@@ -3,14 +3,16 @@
 {% block content %}
 
     <p><h2>Topics</h2></p>
-
+    <a href="{% url 'learning_logs:new_topic' %}">
+        <button name="add-topic">Add New Topic</button>
+    </a>
     <ul>
         {% for topic in topics %}
             <li>
                 <a href="{% url 'learning_logs:topic' topic.id %}">{{ topic }}</a>
             </li>
         {% empty %}
-            <li>No topics have been added yet</li>
+            No topics have been added yet
         {% endfor %}
     </ul>
 

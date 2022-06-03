@@ -3,9 +3,15 @@
         <a href="{% url 'learning_logs:index' %}">Learning Log</a>
     </h1>
 </p>
-<p>
+{% if user.is_authenticated %}
+    <p style="float: right">Hello, {{ user.username }} | <a href="{% url 'users:logout' %}">Log out</a></p>
+{% else %}
+    <p style="float: right"><a href="{% url 'users:login' %}">Log in</a> | <a href="{% url 'users:register' %}">Register</a></p>
+{% endif %}
+<p style="float: left">
     <a href="{% url 'learning_logs:index' %}">Home</a> |
     <a href="{% url 'learning_logs:topics' %}">Topics</a>
 </p>
+<p style="clear: both">
 
 {% block content %}{% endblock content %}

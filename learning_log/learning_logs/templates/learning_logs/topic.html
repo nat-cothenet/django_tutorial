@@ -5,14 +5,22 @@
   <p><h2>Topic: {{ topic }}</h2></p>
 
   <p><h3>Entries ({{ entries.count }}): </h3></p>
+
+  <a href="{% url 'learning_logs:new_entry' topic.id %}">
+    <button name="add-entry">Add New Entry</button>
+  </a>
+
   <ul>
     {% for entry in entries %}
       <li>
-        <p><b>{{ entry.date_added|date:'M d, Y H:i' }}</b></p>
+        <p>
+          <b>{{ entry.date_added|date:'M d, Y H:i' }}</b> |
+          <a href="{% url 'learning_logs:edit_entry' entry.id %}">Edit entry</a>
+        </p>
         <p>{{ entry.text|linebreaks }}</p>
       </li>
       {% empty %}
-        <li>There are no entries for this topic yet</li>
+      There are no entries for this topic yet
     {% endfor %}
   </ul>
 
