@@ -37,6 +37,8 @@ def new_topic(request):
     if request.method != 'POST':
         # No data submitted; create a blank form
         form = TopicForm()
+    elif "cancel" in request.POST:
+        return redirect('learning_logs:topics')
     else:
         # POST data submitted; process data
         form = TopicForm(data=request.POST)
