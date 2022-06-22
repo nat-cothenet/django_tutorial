@@ -1,4 +1,3 @@
-../pizzeria/pizza_env
-**/settings.py
+**/*_env
 **/__pycache__/
 **/*.sqlite3
