@@ -134,5 +134,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_URL = 'users:login'
 
 # Heroku settings
+import os
 import django_heroku
 django_heroku.settings(locals())
+
+env_debug = os.environ.get('DEBUG')
+if env_debug in ['TRUE', 'FALSE']:
+    DEBUG = env_debug == 'TRUE'
